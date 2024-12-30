@@ -10,10 +10,46 @@
 #include <dt-bindings/zmk/outputs.h>
 
 / {
+    behaviors {
+        OSX_LAYER: OSX_LAYER {
+            compatible = "zmk,behavior-tap-dance";
+            label = "OSX_LAYER";
+            #binding-cells = <0>;
+            bindings = <&kp EXCLAMATION>, <&to 1>;
+        };
+
+        HML: HML {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+        };
+
+        HMR: HMR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+        };
+
+        PC_LAYER: PC_LAYER {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PC_LAYER";
+            #binding-cells = <0>;
+            bindings = <&kp EXCLAMATION>, <&to 0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        main {
+        PC {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
@@ -23,8 +59,17 @@
             bindings = <
 &kp ESCAPE  &kp B  &kp L  &kp D   &kp W  &kp Z        &kp MINUS  &kp F  &kp O     &kp U    &kp J     &kp BSPC
 &kp TAB     &kp N  &kp R  &kp T   &kp S  &kp G        &kp Y      &kp H  &kp A     &kp E    &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X  &kp M   &kp C  &kp V        &kp K      &kp P  &kp DOT   &kp DOT  &kp FSLH  &kp ESC
-                          &trans  &mo 1  &kp SPACE    &kp RET    &mo 2  &kp RALT
+&kp LSHFT   &kp Q  &kp X  &kp M   &kp C  &kp V        &kp K      &kp P  &kp DOT   &kp DOT  &kp FSLH  &OSX_LAYER
+                          &trans  &mo 2  &kp SPACE    &kp RET    &mo 3  &kp RALT
+            >;
+        };
+
+        OSX {
+            bindings = <
+&kp ESCAPE  &kp B  &kp L         &kp D        &kp W        &kp Z        &kp MINUS  &kp F  &kp O     &kp U    &kp J     &kp BSPC
+&kp TAB     &kp N  &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y      &kp H  &kp A     &kp E    &kp I     &kp COMMA
+&kp LSHFT   &kp Q  &kp X         &kp M        &kp C        &kp V        &kp K      &kp P  &kp DOT   &kp DOT  &kp FSLH  &PC_LAYER
+                                 &none        &mo 2        &kp SPACE    &kp RET    &mo 3  &kp RALT
             >;
         };
 
@@ -38,7 +83,7 @@
             bindings = <
 &kp TAB    &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6    &kp N7          &kp N8        &kp N9     &kp N0    &kp BSPC
 &trans     &trans  &trans  &trans    &trans  &trans       &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp PIPE  &kp TILDE
-&kp LSHFT  &trans  &trans  &trans    &trans  &trans       &trans    &trans          &trans        &trans     &trans    &mo 3
+&kp LSHFT  &trans  &trans  &trans    &trans  &trans       &trans    &trans          &trans        &trans     &trans    &mo 4
                            &kp LGUI  &trans  &kp SPACE    &kp RET   &trans          &kp RALT
             >;
         };
