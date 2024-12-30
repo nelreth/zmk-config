@@ -16,7 +16,7 @@
             label = "OSX_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N1>, <&to 1>;
+            bindings = <&sl 5>, <&to 1>;
         };
 
         HML: HML {
@@ -216,6 +216,15 @@
 &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans         &trans  &trans  &trans  &trans  &trans
 &trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &trans         &trans  &trans  &trans  &trans  &trans
                                          &trans        &trans        &trans          &trans         &trans  &trans
+            >;
+        };
+
+        strings {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &email  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
