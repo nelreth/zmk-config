@@ -23,6 +23,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HML";
             bindings = <&kp>, <&kp>;
+
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
@@ -45,6 +46,15 @@
             tapping-term-ms = <200>;
             bindings = <&kp N2>, <&to 0>;
         };
+
+        new_behavior: new_behavior {
+            compatible = "zmk,behavior-hold-tap";
+            label = "NEW_BEHAVIOR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+        };
     };
 
     keymap {
@@ -60,7 +70,7 @@
             bindings = <
 &kp ESCAPE  &kp B  &kp L  &kp D   &kp W  &kp Z        &kp MINUS  &kp F  &kp O     &kp U    &kp J     &kp BSPC
 &kp TAB     &kp N  &kp R  &kp T   &kp S  &kp G        &kp Y      &kp H  &kp A     &kp E    &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X  &kp M   &kp C  &kp V        &kp K      &kp P  &kp DOT   &kp DOT  &kp FSLH  &OSX_LAYER
+&kp LSHFT   &kp Q  &kp X  &kp M   &kp C  &kp V        &kp K      &kp P  &kp DOT   &kp DOT  &kp FSLH  &new_behavior PSCRN NUMBER_1
                           &trans  &mo 2  &kp SPACE    &kp RET    &mo 3  &kp RALT
             >;
         };
