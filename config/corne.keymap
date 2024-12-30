@@ -164,19 +164,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp B             &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J        &kp BSPC
-&kp TAB     &kp N             &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I        &comma_question
-&kp LSHFT   &win_layer_print  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &dot_greater   &minus_quotes     &slash_less  &OSX_LAYER
-                                               &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
+&kp ESCAPE  &kp B              &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J        &kp BSPC
+&kp TAB     &kp N              &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I        &comma_question
+&kp LSHFT   &q_win_layer_name  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &dot_greater   &minus_quotes     &slash_less  &OSX_LAYER
+                                                &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
             >;
         };
 
         OSX {
             bindings = <
-&kp ESCAPE  &kp B             &kp L         &kp D        &kp W        &kp Z        &apost_under  &kp F        &kp O         &kp U          &kp J        &kp BSPC
-&kp TAB     &kp N             &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y         &HMR RCMD H  &HMR RALT A   &kp E          &kp I        &kp COMMA
-&kp LSHFT   &osx_layer_print  &kp X         &kp M        &kp C        &kp V        &kp K         &kp P        &dot_greater  &minus_quotes  &slash_less  &PC_LAYER
-                                            &none        &mo 2        &kp SPACE    &kp RET       &mo 3        &kp RALT
+&kp ESCAPE  &kp B              &kp L         &kp D        &kp W        &kp Z        &apost_under  &kp F        &kp O         &kp U          &kp J        &kp BSPC
+&kp TAB     &kp N              &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y         &HMR RCMD H  &HMR RALT A   &kp E          &kp I        &kp COMMA
+&kp LSHFT   &q_osx_layer_name  &kp X         &kp M        &kp C        &kp V        &kp K         &kp P        &dot_greater  &minus_quotes  &slash_less  &PC_LAYER
+                                             &none        &mo 2        &kp SPACE    &kp RET       &mo 3        &kp RALT
             >;
         };
 
