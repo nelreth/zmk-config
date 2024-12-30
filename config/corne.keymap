@@ -15,16 +15,14 @@
             compatible = "zmk,behavior-tap-dance";
             label = "OSX_LAYER";
             #binding-cells = <0>;
-            bindings = <&kp EXCLAMATION>, <&to 1>;
-
-            tapping-term-ms = <280>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&to 1>;
         };
 
         HML: HML {
             compatible = "zmk,behavior-hold-tap";
             label = "HML";
             bindings = <&kp>, <&kp>;
-
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
@@ -44,9 +42,8 @@
             compatible = "zmk,behavior-tap-dance";
             label = "PC_LAYER";
             #binding-cells = <0>;
-            bindings = <&kp EXCLAMATION>, <&to 0>;
-
-            tapping-term-ms = <280>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N2>, <&to 0>;
         };
     };
 
