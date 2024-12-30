@@ -67,6 +67,60 @@
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
+
+        comma_question: comma_question {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COMMA_QUESTION";
+            bindings = <&kp COMMA>, <&kp QUESTION>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+
+        dot_greater: dot_greater {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_GREATER";
+            bindings = <&kp DOT>, <&kp GREATER_THAN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+
+        slash_less: slash_less {
+            compatible = "zmk,behavior-mod-morph";
+            label = "SLASH_LESS";
+            bindings = <&kp SLASH>, <&kp LESS_THAN>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+
+        minus_quotes: minus_quotes {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MINUS_QUOTES";
+            bindings = <&kp MINUS>, <&kp DOUBLE_QUOTES>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
+
+        q_osx_layer_name: q_osx_layer_name {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Q_OSX_LAYER_NAME";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&osx_layer_print>;
+        };
+
+        q_win_layer_name: q_win_layer_name {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Q_WIN_LAYER_NAME";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&win_layer_print>;
+        };
     };
 
     macros {
@@ -83,6 +137,20 @@
             bindings = <&kp N &kp E &kp L &kp R &kp E &kp T &kp H &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
             label = "EMAIL";
         };
+
+        osx_layer_print: osx_layer_print {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LS(O) &kp LS(S) &kp LS(X)>;
+            label = "OSX_LAYER_PRINT";
+        };
+
+        win_layer_print: win_layer_print {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp LS(W) &kp LS(I) &kp LS(N)>;
+            label = "WIN_LAYER_PRINT";
+        };
     };
 
     keymap {
@@ -96,19 +164,19 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp B  &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J     &kp BSPC
-&kp TAB     &kp N  &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &kp DOT        &kp DOT           &kp FSLH  &OSX_LAYER
-                                    &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
+&kp ESCAPE  &kp B             &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J        &kp BSPC
+&kp TAB     &kp N             &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I        &comma_question
+&kp LSHFT   &win_layer_print  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &dot_greater   &minus_quotes     &slash_less  &OSX_LAYER
+                                               &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
             >;
         };
 
         OSX {
             bindings = <
-&kp ESCAPE  &kp B  &kp L         &kp D        &kp W        &kp Z        &kp MINUS  &kp F        &kp O        &kp U    &kp J     &kp BSPC
-&kp TAB     &kp N  &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y      &HMR RCMD H  &HMR RALT A  &kp E    &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X         &kp M        &kp C        &kp V        &kp K      &kp P        &kp DOT      &kp DOT  &kp FSLH  &PC_LAYER
-                                 &none        &mo 2        &kp SPACE    &kp RET    &mo 3        &kp RALT
+&kp ESCAPE  &kp B             &kp L         &kp D        &kp W        &kp Z        &apost_under  &kp F        &kp O         &kp U          &kp J        &kp BSPC
+&kp TAB     &kp N             &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y         &HMR RCMD H  &HMR RALT A   &kp E          &kp I        &kp COMMA
+&kp LSHFT   &osx_layer_print  &kp X         &kp M        &kp C        &kp V        &kp K         &kp P        &dot_greater  &minus_quotes  &slash_less  &PC_LAYER
+                                            &none        &mo 2        &kp SPACE    &kp RET       &mo 3        &kp RALT
             >;
         };
 
