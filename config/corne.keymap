@@ -16,6 +16,8 @@
             label = "OSX_LAYER";
             #binding-cells = <0>;
             bindings = <&kp EXCLAMATION>, <&to 1>;
+
+            tapping-term-ms = <280>;
         };
 
         HML: HML {
@@ -43,6 +45,8 @@
             label = "PC_LAYER";
             #binding-cells = <0>;
             bindings = <&kp EXCLAMATION>, <&to 0>;
+
+            tapping-term-ms = <280>;
         };
     };
 
