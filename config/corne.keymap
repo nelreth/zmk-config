@@ -22,7 +22,7 @@
         HML: HML {
             compatible = "zmk,behavior-hold-tap";
             label = "HML";
-            bindings = <&kp>, <&kp>;
+            bindings = <&sk>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
@@ -32,7 +32,7 @@
         HMR: HMR {
             compatible = "zmk,behavior-hold-tap";
             label = "HMR";
-            bindings = <&kp>, <&kp>;
+            bindings = <&sk>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <280>;
@@ -57,6 +57,15 @@
         };
     };
 
+    macros {
+        ctrl_alt_del: ctrl_alt_del {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LA(DEL))>;
+            label = "CTRL_ALT_DEL";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -68,10 +77,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp B  &kp L  &kp D  &kp W  &kp Z        &kp MINUS  &kp F  &kp O          &kp U    &kp J     &kp BSPC
-&kp TAB     &kp N  &kp R  &kp T  &kp S  &kp G        &kp Y      &kp H  &kp A          &kp E    &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X  &kp M  &kp C  &kp V        &kp K      &kp P  &kp DOT        &kp DOT  &kp FSLH  &OSX_LAYER
-                          &none  &mo 2  &kp SPACE    &kp RET    &mo 3  &kp RIGHT_ALT
+&kp ESCAPE  &kp B  &kp L            &kp D                &kp W            &kp Z        &kp MINUS  &kp F  &kp O          &kp U             &kp J     &kp BSPC
+&kp TAB     &kp N  &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y      &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I     &kp COMMA
+&kp LSHFT   &kp Q  &kp X            &kp M                &kp C            &kp V        &kp K      &kp P  &kp DOT        &kp DOT           &kp FSLH  &OSX_LAYER
+                                    &none                &mo 2            &kp SPACE    &kp RET    &mo 3  &kp RIGHT_ALT
             >;
         };
 
@@ -116,10 +125,10 @@
 
         layer_3 {
             bindings = <
-&bootloader  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &bootloader
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans  &trans
-&trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans  &trans
-                                         &trans        &trans        &trans          &trans  &trans  &trans
+&bootloader  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans          &ctrl_alt_del  &trans  &trans  &trans  &trans  &bootloader
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans         &trans  &trans  &trans  &trans  &trans
+&trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &trans         &trans  &trans  &trans  &trans  &trans
+                                         &trans        &trans        &trans          &trans         &trans  &trans
             >;
         };
     };
