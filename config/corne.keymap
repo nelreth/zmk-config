@@ -27,6 +27,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
+            flavor = "tap-preferred";
         };
 
         HMR: HMR {
@@ -37,6 +38,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
+            flavor = "tap-preferred";
         };
 
         PC_LAYER: PC_LAYER {
@@ -55,6 +57,16 @@
             #binding-cells = <2>;
             tapping-term-ms = <280>;
         };
+
+        apost_under: apost_under {
+            compatible = "zmk,behavior-mod-morph";
+            label = "APOST_UNDER";
+            bindings = <&kp APOSTROPHE>, <&kp UNDER>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT)>;
+            keep-mods = <(MOD_RSFT)>;
+        };
     };
 
     macros {
@@ -63,6 +75,13 @@
             #binding-cells = <0>;
             bindings = <&kp LC(LA(DEL))>;
             label = "CTRL_ALT_DEL";
+        };
+
+        email: email {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N &kp E &kp L &kp R &kp E &kp T &kp H &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "EMAIL";
         };
     };
 
@@ -77,10 +96,10 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp B  &kp L            &kp D                &kp W            &kp Z        &kp MINUS  &kp F  &kp O          &kp U             &kp J     &kp BSPC
-&kp TAB     &kp N  &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y      &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I     &kp COMMA
-&kp LSHFT   &kp Q  &kp X            &kp M                &kp C            &kp V        &kp K      &kp P  &kp DOT        &kp DOT           &kp FSLH  &OSX_LAYER
-                                    &none                &mo 2            &kp SPACE    &kp RET    &mo 3  &kp RIGHT_ALT
+&kp ESCAPE  &kp B  &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J     &kp BSPC
+&kp TAB     &kp N  &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I     &kp COMMA
+&kp LSHFT   &kp Q  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &kp DOT        &kp DOT           &kp FSLH  &OSX_LAYER
+                                    &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
             >;
         };
 
@@ -116,10 +135,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp F1   &kp F2    &kp F3  &kp F4    &kp F5    &kp F6       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp F7   &kp F8    &kp F9  &kp F10   &kp F11   &kp F12      &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                           &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
+&kp TAB  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET         &kp AMPS           &kp ASTRK  &kp LPAR   &kp RPAR  &kp BSPC
+&kp F1   &kp F2    &kp F3  &kp F4    &kp F5    &kp F6       &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp SEMI   &kp EQUAL  &kp BSLH  &kp GRAVE
+&kp F7   &kp F8    &kp F9  &kp F10   &kp F11   &kp F12      &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp COLON  &kp PLUS   &kp PIPE  &kp TILDE
+                           &kp LGUI  &trans    &kp SPACE    &kp RET           &trans             &kp RALT
             >;
         };
 
