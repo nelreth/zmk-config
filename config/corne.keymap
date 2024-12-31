@@ -157,7 +157,7 @@
         compatible = "zmk,combos";
 
         enter_cmb {
-            bindings = <&none>;
+            bindings = <&kp ENTER>;
             key-positions = <40 20 21>;
         };
     };
