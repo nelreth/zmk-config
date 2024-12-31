@@ -153,6 +153,15 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        enter_cmb {
+            bindings = <&none>;
+            key-positions = <40 20 21>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
