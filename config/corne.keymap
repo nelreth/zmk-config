@@ -16,7 +16,7 @@
             label = "OSX_LAYER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl 5>, <&to 1>;
+            bindings = <&sl 4>, <&to 0>;
         };
 
         HML: HML {
@@ -39,14 +39,6 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             flavor = "tap-preferred";
-        };
-
-        PC_LAYER: PC_LAYER {
-            compatible = "zmk,behavior-tap-dance";
-            label = "PC_LAYER";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp N2>, <&to 0>;
         };
 
         new_behavior: new_behavior {
@@ -107,20 +99,6 @@
             mods = <(MOD_LSFT)>;
             keep-mods = <(MOD_RSFT)>;
         };
-
-        q_osx_layer_name: q_osx_layer_name {
-            compatible = "zmk,behavior-tap-dance";
-            label = "Q_OSX_LAYER_NAME";
-            #binding-cells = <0>;
-            bindings = <&kp Q>, <&osx_layer_print>;
-        };
-
-        q_win_layer_name: q_win_layer_name {
-            compatible = "zmk,behavior-tap-dance";
-            label = "Q_WIN_LAYER_NAME";
-            #binding-cells = <0>;
-            bindings = <&kp Q>, <&win_layer_print>;
-        };
     };
 
     macros {
@@ -137,20 +115,6 @@
             bindings = <&kp N &kp E &kp L &kp R &kp E &kp T &kp H &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
             label = "EMAIL";
         };
-
-        osx_layer_print: osx_layer_print {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp LS(O) &kp LS(S) &kp LS(X)>;
-            label = "OSX_LAYER_PRINT";
-        };
-
-        win_layer_print: win_layer_print {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&none &kp LS(W) &kp LS(I) &kp LS(N)>;
-            label = "WIN_LAYER_PRINT";
-        };
     };
 
     combos {
@@ -158,14 +122,14 @@
 
         enter_cmb {
             bindings = <&kp ENTER>;
-            key-positions = <40 20 21>;
+            key-positions = <8 20>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        PC {
+        main {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
             // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
@@ -173,23 +137,14 @@
             //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
 
             bindings = <
-&kp ESCAPE  &kp B              &kp L            &kp D                &kp W            &kp Z        &apost_under  &kp F  &kp O          &kp U             &kp J        &kp BSPC
-&kp TAB     &kp N              &HML LEFT_ALT R  &HML LEFT_CONTROL T  &HML LEFT_WIN S  &kp G        &kp Y         &kp H  &HMR RCTRL A   &HMR RIGHT_ALT E  &kp I        &comma_question
-&kp LSHFT   &q_win_layer_name  &kp X            &kp M                &kp C            &kp V        &kp K         &kp P  &dot_greater   &minus_quotes     &slash_less  &OSX_LAYER
-                                                &none                &mo 2            &kp SPACE    &kp RET       &mo 3  &kp RIGHT_ALT
+&kp ESCAPE  &kp B  &kp L         &kp D            &kp W            &kp Z        &apost_under  &kp F             &kp O             &kp U          &kp J        &kp BSPC
+&kp TAB     &kp N  &HML LCTRL R  &HML LEFT_ALT T  &HML LEFT_WIN S  &kp G        &kp Y         &HMR RIGHT_GUI H  &HMR RIGHT_ALT A  &HMR RCTRL E   &kp I        &comma_question
+&kp LSHFT   &none  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &none
+                                 &mo 3            &mo 1            &kp SPACE    &kp RET       &mo 2             &kp RIGHT_ALT
             >;
         };
 
-        OSX {
-            bindings = <
-&kp ESCAPE  &kp B              &kp L         &kp D        &kp W        &kp Z        &apost_under  &kp F        &kp O         &kp U          &kp J        &kp BSPC
-&kp TAB     &kp N              &HML LCTRL R  &HML LALT T  &HML LCMD S  &kp G        &kp Y         &HMR RCMD H  &HMR RALT A   &kp E          &kp I        &kp COMMA
-&kp LSHFT   &q_osx_layer_name  &kp X         &kp M        &kp C        &kp V        &kp K         &kp P        &dot_greater  &minus_quotes  &slash_less  &PC_LAYER
-                                             &none        &mo 2        &kp SPACE    &kp RET       &mo 3        &kp RALT
-            >;
-        };
-
-        lower_layer {
+        nav {
             // -----------------------------------------------------------------------------------------
             // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
             // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
@@ -199,8 +154,8 @@
             bindings = <
 &kp TAB    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6    &kp N7          &kp N8        &kp N9     &kp N0    &kp BSPC
 &trans     &trans  &trans  &trans  &trans  &trans       &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp PIPE  &kp TILDE
-&kp LSHFT  &trans  &trans  &trans  &trans  &trans       &trans    &trans          &trans        &trans     &trans    &mo 4
-                           &trans  &trans  &kp SPACE    &kp RET   &trans          &trans
+&kp LSHFT  &trans  &trans  &trans  &trans  &trans       &trans    &trans          &trans        &trans     &trans    &none
+                           &trans  &trans  &kp SPACE    &kp RET   &mo 4           &trans
             >;
         };
 
@@ -221,10 +176,10 @@
 
         layer_3 {
             bindings = <
-&bootloader  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans          &ctrl_alt_del  &trans  &trans  &trans  &trans  &bootloader
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans         &trans  &trans  &trans  &trans  &trans
-&trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &trans         &trans  &trans  &trans  &trans  &trans
-                                         &trans        &trans        &trans          &trans         &trans  &trans
+&bootloader  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans          &none         &kp N7        &kp N8        &kp N9        &trans      &bootloader
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans      &trans
+&trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_DOT  &trans
+                                         &trans        &trans        &trans          &trans        &trans        &trans
             >;
         };
 
