@@ -41,15 +41,6 @@
             flavor = "tap-preferred";
         };
 
-        new_behavior: new_behavior {
-            compatible = "zmk,behavior-hold-tap";
-            label = "NEW_BEHAVIOR";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <280>;
-        };
-
         apost_under: apost_under {
             compatible = "zmk,behavior-mod-morph";
             label = "APOST_UNDER";
@@ -115,6 +106,13 @@
             bindings = <&kp N &kp E &kp L &kp R &kp E &kp T &kp H &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
             label = "EMAIL";
         };
+
+        save: save {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(S)>;
+            label = "SAVE";
+        };
     };
 
     combos {
@@ -122,7 +120,17 @@
 
         enter_cmb {
             bindings = <&kp ENTER>;
-            key-positions = <8 20>;
+            key-positions = <20 21>;
+        };
+
+        save {
+            bindings = <&save>;
+            key-positions = <2 3 37>;
+        };
+
+        copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <40 32 33>;
         };
     };
 
@@ -152,10 +160,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6    &kp N7          &kp N8        &kp N9     &kp N0      &kp BSPC
-&trans     &trans  &trans  &trans  &trans  &trans       &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp DELETE  &kp TILDE
-&kp LSHFT  &trans  &trans  &trans  &trans  &trans       &trans    &trans          &trans        &trans     &trans      &none
-                           &trans  &trans  &kp SPACE    &kp RET   &mo 4           &trans
+&kp TAB    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5        &kp N6    &kp N7          &kp N8        &kp N9     &kp N0      &kp BSPC
+&trans     &trans  &trans  &trans  &trans  &caps_word    &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp DELETE  &kp TILDE
+&kp LSHFT  &trans  &trans  &trans  &trans  &trans        &trans    &trans          &trans        &trans     &trans      &none
+                           &trans  &trans  &kp SPACE     &kp RET   &mo 4           &trans
             >;
         };
 
