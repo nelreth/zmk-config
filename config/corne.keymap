@@ -147,7 +147,7 @@
             bindings = <
 &kp ESCAPE  &kp B  &kp L         &kp D            &kp W            &kp Z        &apost_under  &kp F             &kp O             &kp U          &kp J        &kp BSPC
 &kp TAB     &kp N  &HML LCTRL R  &HML LEFT_ALT T  &HML LEFT_WIN S  &kp G        &kp Y         &HMR RIGHT_GUI H  &HMR RIGHT_ALT A  &HMR RCTRL E   &kp I        &comma_question
-&kp LSHFT   &none  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &none
+&kp LSHFT   &kp Q  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &none
                                  &mo 3            &mo 1            &kp SPACE    &kp RET       &mo 2             &kp RIGHT_ALT
             >;
         };
