@@ -120,19 +120,26 @@
             bindings = <&none &kp M &kp N0 &kp N1 &kp N3 &kp N1 &kp N9 &kp N8 &kp MINUS &kp A &kp D &kp M>;
             label = "WORK_ID";
         };
+
+        keepass: keepass {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(RA(K))>;
+            label = "KEEPASS";
+        };
     };
 
     combos {
         compatible = "zmk,combos";
 
-        enter_cmb {
+        enter_right {
             bindings = <&kp ENTER>;
             key-positions = <20 21>;
         };
 
         save {
             bindings = <&save>;
-            key-positions = <2 3 37>;
+            key-positions = <2 37 3>;
         };
 
         copy {
@@ -143,6 +150,11 @@
         paste {
             bindings = <&kp LC(V)>;
             key-positions = <27 28 37>;
+        };
+
+        enter_left {
+            bindings = <&kp ENTER>;
+            key-positions = <14 15>;
         };
     };
 
@@ -172,10 +184,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5        &kp N6    &kp N7          &kp N8        &kp N9     &kp N0      &kp BSPC
-&trans     &trans  &trans  &trans  &trans  &caps_word    &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp DELETE  &kp TILDE
-&kp LSHFT  &trans  &trans  &trans  &trans  &trans        &trans    &trans          &trans        &trans     &trans      &none
-                           &trans  &trans  &kp SPACE     &kp RET   &mo 4           &trans
+&kp TAB    &kp N1    &kp N2  &kp N3  &kp N4  &kp N5        &kp N6    &kp N7          &kp N8        &kp N9     &kp N0      &kp BSPC
+&trans     &trans    &trans  &trans  &trans  &caps_word    &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp DELETE  &kp TILDE
+&kp LSHFT  &keepass  &trans  &trans  &trans  &trans        &trans    &trans          &trans        &trans     &trans      &none
+                             &trans  &trans  &kp SPACE     &kp RET   &mo 4           &trans
             >;
         };
 
@@ -197,15 +209,15 @@
         layer_3 {
             bindings = <
 &bootloader  &out OUT_USB  &out OUT_BLE  &trans        &trans        &trans          &none         &kp N7        &kp N8        &kp N9        &trans      &kp BACKSPACE
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans      &trans
+&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &trans      &trans
 &trans       &bt BT_PRV    &bt BT_NXT    &trans        &trans        &trans          &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp KP_DOT  &trans
-                                         &trans        &trans        &trans          &trans        &trans        &trans
+                                         &trans        &trans        &trans          &trans        &kp NUMBER_0  &trans
             >;
         };
 
         strings {
             bindings = <
-&trans  &trans  &work_id  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &work_id  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &ctrl_alt_del
 &trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans  &email  &trans  &trans
 &trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
                           &trans  &trans  &trans    &trans  &trans  &trans
