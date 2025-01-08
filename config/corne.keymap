@@ -113,6 +113,13 @@
             bindings = <&kp LC(S)>;
             label = "SAVE";
         };
+
+        work_id: work_id {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp M &kp N0 &kp N1 &kp N3 &kp N1 &kp N9 &kp N8 &kp MINUS &kp A &kp D &kp M>;
+            label = "WORK_ID";
+        };
     };
 
     combos {
@@ -130,7 +137,12 @@
 
         copy {
             bindings = <&kp LC(C)>;
-            key-positions = <40 32 33>;
+            key-positions = <26 27 37>;
+        };
+
+        paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <27 28 37>;
         };
     };
 
@@ -193,10 +205,10 @@
 
         strings {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &email  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &work_id  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans  &email  &trans  &trans
+&trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                          &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
