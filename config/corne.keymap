@@ -11,12 +11,12 @@
 
 / {
     behaviors {
-        OSX_LAYER: OSX_LAYER {
+        from_osx_to_win: from_osx_to_win {
             compatible = "zmk,behavior-tap-dance";
-            label = "OSX_LAYER";
+            label = "FROM_OSX_TO_WIN";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl 4>, <&to 0>;
+            bindings = <&none>, <&to 0>;
         };
 
         HML: HML {
@@ -104,6 +104,13 @@
             #binding-cells = <0>;
             bindings = <&none>, <&to 0>;
         };
+
+        from_win_to_osx: from_win_to_osx {
+            compatible = "zmk,behavior-tap-dance";
+            label = "FROM_WIN_TO_OSX";
+            #binding-cells = <0>;
+            bindings = <&none>, <&to 6>;
+        };
     };
 
     macros {
@@ -119,13 +126,6 @@
             #binding-cells = <0>;
             bindings = <&kp N &kp E &kp L &kp R &kp E &kp T &kp H &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
             label = "EMAIL";
-        };
-
-        save: save {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(S)>;
-            label = "SAVE";
         };
 
         work_id: work_id {
@@ -151,24 +151,45 @@
             key-positions = <20 21>;
         };
 
-        save {
-            bindings = <&save>;
+        save_win {
+            bindings = <&kp LC(S)>;
             key-positions = <2 37 3>;
+            layers = <0>;
         };
 
-        copy {
+        copy_win {
             bindings = <&kp LC(C)>;
             key-positions = <26 27 37>;
+            layers = <0>;
         };
 
-        paste {
+        paste_win {
             bindings = <&kp LC(V)>;
             key-positions = <27 28 37>;
+            layers = <0>;
         };
 
         enter_left {
             bindings = <&kp ENTER>;
             key-positions = <14 15>;
+        };
+
+        copy_osx {
+            bindings = <&kp LG(C)>;
+            key-positions = <2 37 3>;
+            layers = <6>;
+        };
+
+        save_osx {
+            bindings = <&kp LG(S)>;
+            key-positions = <2 37 3>;
+            layers = <6>;
+        };
+
+        paste_osx {
+            bindings = <&kp LG(V)>;
+            key-positions = <27 28 37>;
+            layers = <6>;
         };
     };
 
@@ -185,7 +206,7 @@
             bindings = <
 &kp ESCAPE  &kp B  &kp L         &kp D            &kp W            &kp Z        &apost_under  &kp F             &kp O             &kp U          &kp J        &kp BSPC
 &kp TAB     &kp N  &HML LCTRL R  &HML LEFT_ALT T  &HML LEFT_WIN S  &kp G        &kp Y         &HMR RIGHT_GUI H  &HMR RIGHT_ALT A  &HMR RCTRL E   &kp I        &comma_question
-&kp LSHFT   &kp Q  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &none
+&kp LSHFT   &kp Q  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &from_win_to_osx
                                  &mo 3            &mo 1            &kp SPACE    &kp RET       &mo 2             &kp RIGHT_ALT
             >;
         };
@@ -244,6 +265,15 @@
 &kp TAB    &kp A  &kp S  &kp D   &kp F  &kp G        &kp H      &kp J   &kp K          &kp L    &kp SEMI  &kp APOS
 &kp LSHFT  &kp Z  &kp X  &kp C   &kp V  &kp B        &kp N      &kp M   &kp COMMA      &kp DOT  &kp FSLH  &go_to_main
                          &trans  &mo 1  &kp SPACE    &kp ENTER  &trans  &kp RIGHT_ALT
+            >;
+        };
+
+        OSX {
+            bindings = <
+&kp ESCAPE  &kp B  &kp L         &kp D            &kp W            &kp Z        &apost_under  &kp F             &kp O             &kp U          &kp J        &kp BSPC
+&kp TAB     &kp N  &HML LCTRL R  &HML LEFT_ALT T  &HML LEFT_WIN S  &kp G        &kp Y         &HMR RIGHT_GUI H  &HMR RIGHT_ALT A  &HMR RCTRL E   &kp I        &comma_question
+&kp LSHFT   &kp Q  &kp X         &kp M            &kp C            &kp V        &kp K         &kp P             &dot_greater      &minus_quotes  &slash_less  &from_osx_to_win
+                                 &mo 3            &mo 1            &kp SPACE    &kp RET       &mo 2             &kp RIGHT_ALT
             >;
         };
     };
