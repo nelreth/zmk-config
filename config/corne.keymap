@@ -176,25 +176,35 @@
 
         copy_osx {
             bindings = <&kp LG(C)>;
-            key-positions = <2 37 3>;
+            key-positions = <26 27>;
             layers = <6>;
         };
 
         save_osx {
             bindings = <&kp LG(S)>;
-            key-positions = <2 37 3>;
+            key-positions = <2 3>;
             layers = <6>;
         };
 
         paste_osx {
             bindings = <&kp LG(V)>;
-            key-positions = <27 28 37>;
+            key-positions = <27 28>;
             layers = <6>;
         };
 
         undo_win {
             bindings = <&kp LC(Z)>;
             key-positions = <29 28>;
+        };
+
+        undo_osx {
+            bindings = <&kp LG(Z)>;
+            key-positions = <29 28>;
+        };
+
+        redo_osx {
+            bindings = <&kp LG(LS(Z))>;
+            key-positions = <24 25>;
         };
     };
 
