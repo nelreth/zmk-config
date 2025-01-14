@@ -153,19 +153,19 @@
 
         save_win {
             bindings = <&kp LC(S)>;
-            key-positions = <2 37 3>;
+            key-positions = <2 3>;
             layers = <0>;
         };
 
         copy_win {
             bindings = <&kp LC(C)>;
-            key-positions = <26 27 37>;
+            key-positions = <26 27>;
             layers = <0>;
         };
 
         paste_win {
             bindings = <&kp LC(V)>;
-            key-positions = <27 28 37>;
+            key-positions = <27 28>;
             layers = <0>;
         };
 
@@ -190,6 +190,11 @@
             bindings = <&kp LG(V)>;
             key-positions = <27 28 37>;
             layers = <6>;
+        };
+
+        undo_win {
+            bindings = <&kp LC(Z)>;
+            key-positions = <29 28>;
         };
     };
 
